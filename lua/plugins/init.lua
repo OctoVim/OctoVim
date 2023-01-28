@@ -23,7 +23,7 @@ lazy.setup({
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "onsails/lspkind.nvim",
+
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
@@ -33,7 +33,10 @@ lazy.setup({
       "rafamadriz/friendly-snippets",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/nvim-cmp",
-    }
+    },
+    config = function()
+      require('plugins.configs.lsp')
+    end,
   },
   {
     "glepnir/lspsaga.nvim",
@@ -74,7 +77,7 @@ lazy.setup({
       require('plugins.configs.colorschemes')
     end
   },
-
+  { "catppuccin/nvim", name = "catppuccin" },
   { "windwp/nvim-autopairs", config = true, event = "InsertEnter" },
   {
     "nvim-telescope/telescope.nvim",
@@ -89,12 +92,18 @@ lazy.setup({
   { "folke/tokyonight.nvim" },
   { "phaazon/hop.nvim", config = true, event = "BufEnter" },
   { "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
+  {
+    "kdheepak/lazygit.nvim",
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "NeoTree" },
+    }
+  },
   { "iamcco/markdown-preview.nvim", ft = "markdown" },
 
   {
     "karb94/neoscroll.nvim",
     event = "BufEnter",
-    enabled = false
+    enabled = true,
   },
 
   "goolord/alpha-nvim",
