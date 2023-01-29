@@ -26,12 +26,6 @@ local diagnostics = {
 	always_visible = false,
 }
 
-local spaces = { 
-  function ()
-    return " "
-  end
-}
-
 local branch = {
 	"branch",
 	icon = "",
@@ -66,7 +60,7 @@ local location = {
 
 local custom_icons = {
 	function()
-		return ""
+		return ""
 	end,
 	separator = { left = "", right = "" },
 }
@@ -160,26 +154,26 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "dashboard", 'packer', 'NVimTree' },
+    disabled_filetypes = { "alpha", "dashboard", 'packer', 'neo-tree' },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = {
 			custom_icons,
-			modes,
+			-- modes,
 		},
 		lualine_b = {
 			{
 				"filetype",
 				icon_only = true,
-				colored = false,
+				colored = true,
 				padding = 1,
         color = { bg = "#2a2c3f"}
 			},
 			{
 				"filename",
 				padding = 1,
-				separator = { left = "", right = "" },
+				separator = { left = "", right = " " },
         color = { bg = "#2a2c3f"}
 			},
     },
