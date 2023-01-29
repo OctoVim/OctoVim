@@ -1,46 +1,47 @@
-require('rose-pine').setup({
-	--- @usage 'main' | 'moon'
-	dark_variant = 'main',
-	bold_vert_split = false,
-	dim_nc_background = false,
-	disable_background = false,
-	disable_float_background = false,
-	disable_italics = false,
-
-	--- @usage string hex value or named color from rosepinetheme.com/palette
-	groups = {
-		background = 'base',
-		panel = 'surface',
-		border = 'highlight_med',
-		comment = 'muted',
-		link = 'iris',
-		punctuation = 'subtle',
-
-		error = 'love',
-		hint = 'iris',
-		info = 'foam',
-		warn = 'gold',
-
-		headings = {
-			h1 = 'iris',
-			h2 = 'foam',
-			h3 = 'rose',
-			h4 = 'gold',
-			h5 = 'pine',
-			h6 = 'foam',
-		}
-		-- or set all headings at once
-		-- headings = 'subtle'
-	},
-
-	-- Change specific vim highlight groups
-	highlight_groups = {
-		ColorColumn = { bg = 'rose' }
-	}
+local colors = require("catppuccin.palettes").get_palette()
+require("catppuccin").setup({
+  flavour = "mocha",
+  color_overrides = {
+    mocha = {
+      base = "#141521",
+    },
+  },
+  custom_highlights = {
+    Comment = { fg = colors.overlay1 },
+    LineNr = { fg = colors.overlay1 },
+  },
+  integrations = {
+    cmp = true,
+    dap = {
+      enabled = true,
+      enable_ui = true,
+    },
+    fidget = true,
+    gitsigns = true,
+    indent_blankline = {
+      enabled = true,
+      colored_indent_levels = true,
+    },
+    markdown = true,
+    mason = true,
+    native_lsp = {
+      enabled = true,
+    },
+    neogit = true,
+    neotree = true,
+    notify = true,
+    nvimtree = true,
+    symbols_outline = true,
+    telescope = true,
+    treesitter = true,
+    treesitter_context = true,
+    which_key = true,
+  },
 })
 
+
 -- setup must be called before loading
-local colorscheme = "rose-pine"
+local colorscheme = "catppuccin"
 
 -- Transparent
 -- vim.api.nvim_create_autocmd("ColorScheme", {
