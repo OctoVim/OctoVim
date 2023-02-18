@@ -50,6 +50,16 @@ lazy.setup({
 		end,
 	},
 	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("plugins.configs.colorschemes")
+		end,
+	},
+	{ "catppuccin/nvim", name = "catppuccin" },
+	{
 		"akinsho/bufferline.nvim",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
@@ -100,16 +110,6 @@ lazy.setup({
 			vim.g.closetag_xhtml_filenames = "*.xhtml,*.jsx"
 		end,
 	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("plugins.configs.colorschemes")
-		end,
-	},
-	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "windwp/nvim-autopairs", config = true, event = "InsertEnter" },
 	{
 		"nvim-telescope/telescope.nvim",
@@ -168,7 +168,5 @@ lazy.setup({
 	},
     {
         'lewis6991/impatient.nvim',
-        config = function ()
-        end
-    }
+    },
 })
