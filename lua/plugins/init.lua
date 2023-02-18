@@ -22,13 +22,14 @@ lazy.setup({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-      -- LSP Stuff
+			-- LSP Stuff
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
-      "glepnir/lspsaga.nvim",
+			"glepnir/lspsaga.nvim",
+            "RRethy/vim-illuminate",
 
-      -- Completions 
+			-- Completions
 			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -37,6 +38,7 @@ lazy.setup({
 			"hrsh7th/cmp-nvim-lua",
 			"lukas-reineke/cmp-under-comparator",
 			"L3MON4D3/LuaSnip",
+			"hrsh7th/cmp-vsnip",
 			"rafamadriz/friendly-snippets",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
@@ -48,16 +50,31 @@ lazy.setup({
 		end,
 	},
 	{
+		"akinsho/bufferline.nvim",
+		dependencies = {
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("plugins.configs.bufferline")
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
-			require("plugins.configs.lualine")
+			require("plugins.configs.ui.lualine")
 		end,
 	},
 	{
-		"akinsho/bufferline.nvim",
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+		},
+		opts = require("plugins.configs.lsp.bbq"),
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -69,14 +86,20 @@ lazy.setup({
 			{ "<leader>e", "<cmd>NeoTreeFocusToggle<cr>", desc = "NeoTree" },
 		},
 		config = function()
-			require("plugins.configs.neotree")
+			require("plugins.configs.ui.neotree")
 		end,
 	},
+
 	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
-
-	"nvim-treesitter/nvim-treesitter",
-	"windwp/nvim-ts-autotag",
-
+	{ "nvim-treesitter/nvim-treesitter" },
+	{ "windwp/nvim-ts-autotag" },
+	{
+		"alvan/vim-closetag",
+		config = function()
+			vim.g.closetag_filenames = "*.html,*.xhtml,*.phtml"
+			vim.g.closetag_xhtml_filenames = "*.xhtml,*.jsx"
+		end,
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
@@ -93,13 +116,14 @@ lazy.setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+		config = function()
+			require("plugins.configs.telescope")
+		end,
 	},
 
-	"nvim-telescope/telescope-ui-select.nvim",
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 
 	{ "numToStr/Comment.nvim", config = true, event = "BufEnter" },
-	{ "folke/tokyonight.nvim" },
-	{ "phaazon/hop.nvim", config = true, event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
 	{
 		"kdheepak/lazygit.nvim",
@@ -112,15 +136,39 @@ lazy.setup({
 	{
 		"karb94/neoscroll.nvim",
 		event = "BufEnter",
-    config = function ()
-      require("neoscroll").setup({})
-    end 
+		config = function()
+			require("neoscroll").setup({})
+		end,
 	},
-	"goolord/alpha-nvim",
+	{ "goolord/alpha-nvim" },
 	{
 		"akinsho/toggleterm.nvim",
 		config = function()
-			require("plugins.configs.toggleterm")
+			require("plugins.configs.ui.toggleterm")
 		end,
 	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+	{
+		"aurum77/live-server.nvim",
+		cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
+		config = function()
+			require("live_server.util").install()
+		end,
+	},
+	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("plugins.configs.ui.scrollbar")
+		end,
+	},
+    {
+        'lewis6991/impatient.nvim',
+        config = function ()
+        end
+    }
 })
