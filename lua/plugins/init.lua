@@ -65,7 +65,7 @@ lazy.setup({
 			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
-			require("plugins.configs.bufferline")
+			require("plugins.configs.ui.bufferline")
 		end,
 	},
 	{
