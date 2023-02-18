@@ -1,4 +1,7 @@
 local status_ok, saga = pcall(require, "lspsaga")
+if not status_ok then
+  return
+end
 
 saga.setup({
 	ui = {
@@ -7,9 +10,14 @@ saga.setup({
 		colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors(),
 		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
+  -- Migrate to BBQ 
+  symbol_in_winbar = {
+    enable = false,
+  },
 })
 
 local keymap = vim.keymap.set
+
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
