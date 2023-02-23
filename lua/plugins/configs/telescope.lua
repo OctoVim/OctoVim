@@ -4,7 +4,6 @@ if not present then
   return
 end
 
-
 local options = {
   defaults = {
     vimgrep_arguments = {
