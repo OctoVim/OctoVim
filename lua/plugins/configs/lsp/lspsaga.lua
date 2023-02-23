@@ -14,6 +14,10 @@ saga.setup({
   symbol_in_winbar = {
     enable = false,
   },
+  diagnostic = {
+      on_insert = false,
+      on_insert_follow = false,
+  }
 })
 
 local keymap = vim.keymap.set
