@@ -18,5 +18,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+vim.opt.runtimepath:prepend(lazypath)
+
 -- Where you can intall and modify your plugins 
 require("plugins")
