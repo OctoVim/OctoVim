@@ -1,23 +1,10 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"--single-branch",
-		"https://github.com/folke/lazy.nvim.git",
-		lazypath,
-	})
-end
-
-vim.opt.runtimepath:prepend(lazypath)
-
 local ok, lazy = pcall(require, "lazy")
 if not ok then
 	return
 end
 
 lazy.setup({
+	install = { colorscheme = { "catppuccin", "habamax" } },
 	root = vim.fn.stdpath("data") .. "/lazy",
 	{
 		"neovim/nvim-lspconfig",
@@ -27,7 +14,7 @@ lazy.setup({
 			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
 			"glepnir/lspsaga.nvim",
-            "RRethy/vim-illuminate",
+			"RRethy/vim-illuminate",
 
 			-- Completions
 			"hrsh7th/nvim-cmp",
@@ -78,6 +65,16 @@ lazy.setup({
 		end,
 	},
 	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"ravenxrz/DAPInstall.nvim",
+		},
+		config = function()
+			require("plugins.configs.ui.dap")
+		end,
+	},
+	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
 		version = "*",
@@ -101,8 +98,6 @@ lazy.setup({
 	},
 
 	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
-	{ "nvim-treesitter/nvim-treesitter" },
-	{ "windwp/nvim-ts-autotag" },
 	{
 		"alvan/vim-closetag",
 		config = function()
@@ -115,13 +110,12 @@ lazy.setup({
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
 			require("plugins.configs.telescope")
 		end,
 	},
-
-	{ "nvim-telescope/telescope-ui-select.nvim" },
 
 	{ "numToStr/Comment.nvim", config = true, event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
@@ -131,7 +125,6 @@ lazy.setup({
 			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "NeoTree" },
 		},
 	},
-	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
 
 	{
 		"karb94/neoscroll.nvim",
@@ -140,7 +133,6 @@ lazy.setup({
 			require("neoscroll").setup({})
 		end,
 	},
-	{ "goolord/alpha-nvim" },
 	{
 		"akinsho/toggleterm.nvim",
 		config = function()
@@ -154,19 +146,31 @@ lazy.setup({
 		end,
 	},
 	{
-		"aurum77/live-server.nvim",
-		cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
-		config = function()
-			require("live_server.util").install()
-		end,
-	},
-	{
 		"petertriho/nvim-scrollbar",
 		config = function()
 			require("plugins.configs.ui.scrollbar")
 		end,
 	},
-    {
-        'lewis6991/impatient.nvim',
-    },
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("plugins.configs.ui.alpha")
+		end,
+	},
+	{
+		"roobert/search-replace.nvim",
+		config = function()
+			require("plugins.configs.search")
+		end,
+	},
+	{
+		"lewis6991/impatient.nvim",
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		configs = function()
+			vim.cmd([[TSInstall all]])
+		end,
+	},
+	{ "windwp/nvim-ts-autotag" },
 })
