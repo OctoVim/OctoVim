@@ -10,7 +10,7 @@ local spaces = {
 	function()
 		return " "
 	end,
-	padding = -1,
+	padding = -10,
 }
 
 local diagnostics = {
@@ -56,7 +56,8 @@ local filetype = {
 
 local location = {
 	"location",
-	separator = { right = "" },
+	separator = { left = "", right = "" },
+	padding = 1,
 }
 
 local custom_icons = {
@@ -180,7 +181,7 @@ lualine.setup({
 			{
 				"filename",
 				file_status = false,
-				padding = 0.3,
+				padding = 0.7,
 				separator = { left = "", right = " " },
 				color = { bg = "#2a2c3f" },
 			},
@@ -214,13 +215,13 @@ lualine.setup({
 			"progress",
 			{
 				function()
-					return ""
+					return ""
 				end,
 				separator = { left = "", right = "" },
 				color = { bg = "#86AAEC", fg = "#000000" },
-				padding = 0.1,
+				padding = 0.5,
 			},
-			location,
+			"filesize",
 		},
 		lualine_y = {},
 		lualine_z = {},
