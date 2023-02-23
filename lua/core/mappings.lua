@@ -53,10 +53,21 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- Telescope
+-- find
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
+-- git
+keymap("n", "<leader>cm", ":Telescope git_commits<CR>", opts)
+keymap("n", "<leader>gt", ":Telescope git_status<CR>", opts)
+-- Hiden term
+keymap("n", "<leader>pt", ":Telescope terms<CR>", opts)
+
+-- others
+keymap("n", "<leader>ro", "<CMD>SearchReplaceSingleBufferOpen<CR>", opts)
+keymap("n", "<leader>rw", "<CMD>SearchReplaceSingleBufferCWord<CR>", opts)
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
