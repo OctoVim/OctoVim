@@ -16,7 +16,7 @@ local check_backspace = function()
 end
 
 local kind_icons = {
-	Text = "",
+	Text = "",
 	Method = "",
 	Function = "",
 	Constructor = "",
@@ -102,12 +102,14 @@ cmp.setup({
 				buffer = "",
 				path = "",
 				emoji = "",
+                copilot = " ",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 	sources = {
 		{ name = "nvim_lsp" },
+        { name = "copilot" },
 		{ name = "nvim_lua" },
 		{ name = "vsnip" },
 		{ name = "luasnip" },
@@ -134,6 +136,6 @@ cmp.setup({
 		},
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 	},
 })

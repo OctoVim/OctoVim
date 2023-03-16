@@ -8,7 +8,7 @@ bl.setup({
 		close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
 		offsets = { { filetype = "NeoTree", text = "", padding = 1 } },
-		separator_style = "thick", -- | "thick" | "thin" | { 'any', 'any' },
+		separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
 		color_icons = true,
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,

@@ -28,21 +28,13 @@ lazy.setup({
 			"hrsh7th/cmp-vsnip",
 			"rafamadriz/friendly-snippets",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-copilot",
 		},
 		config = function()
 			-- Lsp Configs
 			require("plugins.configs.lsp")
 			-- Completions
 			require("plugins.configs.cmp")
-		end,
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("plugins.configs.colorschemes")
 		end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin" },
@@ -120,13 +112,6 @@ lazy.setup({
 	{ "numToStr/Comment.nvim", config = true, event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
 	{
-		"kdheepak/lazygit.nvim",
-		keys = {
-			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "NeoTree" },
-		},
-	},
-
-	{
 		"karb94/neoscroll.nvim",
 		event = "BufEnter",
 		config = function()
@@ -168,8 +153,8 @@ lazy.setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		configs = function()
-			vim.cmd([[TSInstall all]])
+		config = function()
+			require("plugins.configs.treesitter")
 		end,
 	},
 	{ "windwp/nvim-ts-autotag" },

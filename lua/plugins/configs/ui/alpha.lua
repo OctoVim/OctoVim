@@ -33,9 +33,13 @@ local function button(sc, txt, keybind)
 end
 
 -- dynamic header padding
+-- local fn = vim.fn
+-- local marginTopPercent = -10
+-- local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
+--
 local fn = vim.fn
-local marginTopPercent = 0.1
-local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
+local marginTopPercent = -1
+local headerPadding = fn.max({ 1, fn.floor(fn.winheight(0) * marginTopPercent) })
 
 local options = {
 
@@ -54,12 +58,12 @@ local options = {
 			-- "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
 			-- "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
 
-         "    ██████╗  ██████╗████████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗   ",
-         "   ██╔═══██╗██╔════╝╚══██╔══╝██╔═══██╗██║   ██║██║████╗ ████║   ",
-         "   ██║   ██║██║        ██║   ██║   ██║██║   ██║██║██╔████╔██║   ",
-         "   ██║   ██║██║        ██║   ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║   ",
-         "   ╚██████╔╝╚██████╗   ██║   ╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║   ",
-         "    ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝   ",
+			"    ██████╗  ██████╗████████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗   ",
+			"   ██╔═══██╗██╔════╝╚══██╔══╝██╔═══██╗██║   ██║██║████╗ ████║   ",
+			"   ██║   ██║██║        ██║   ██║   ██║██║   ██║██║██╔████╔██║   ",
+			"   ██║   ██║██║        ██║   ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║   ",
+			"   ╚██████╔╝╚██████╗   ██║   ╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║   ",
+			"    ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝   ",
 		},
 		opts = {
 			position = "center",

@@ -13,6 +13,11 @@ local spaces = {
 	padding = -10,
 }
 
+local size = {
+	"filesize",
+	separator = { left = "", right = "" },
+	margin = 0.5,
+}
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
@@ -49,15 +54,12 @@ local diff = {
 	separator = { left = "", right = "" },
 }
 
-local filetype = {
-	"filetype",
-	icons_enabled = true,
-}
-
 local location = {
 	"location",
+    function ()
+        return " "
+    end,
 	separator = { left = "", right = "" },
-	padding = 1,
 }
 
 local custom_icons = {
@@ -69,8 +71,8 @@ local custom_icons = {
 
 local modes = {
 	"mode",
-	separator = { left = "", right = "" },
-	padding = 0.8,
+	separator = { left = "", right = " " },
+	padding = 0.9,
 }
 
 local indent = function()
@@ -146,7 +148,7 @@ local lsp_progess = function()
 	local language_servers = " " .. table.concat(unique_client_names, ", ") .. ""
 
 	if copilot_active then
-		language_servers = language_servers .. "%#SLCopilot#" .. ""
+		language_servers = "%#SLCopilot#" .. "   " .. "| " .. language_servers
 	end
 
 	return language_servers
@@ -169,22 +171,6 @@ lualine.setup({
 		},
 		lualine_b = {},
 		lualine_c = {
-			spaces,
-			{
-				"filetype",
-				icon_only = true,
-				colored = true,
-				padding = 1,
-				color = { bg = "#2a2c3f" },
-				separator = { left = "", right = " " },
-			},
-			{
-				"filename",
-				file_status = false,
-				padding = 0.7,
-				separator = { left = "", right = " " },
-				color = { bg = "#2a2c3f" },
-			},
 			branch,
 			diff,
 		},
@@ -213,15 +199,15 @@ lualine.setup({
 				padding = 0.3,
 			},
 			"progress",
-			{
-				function()
-					return ""
-				end,
+            {
+                function ()
+                    return ""
+                end,
 				separator = { left = "", right = "" },
-				color = { bg = "#86AAEC", fg = "#000000" },
-				padding = 0.5,
-			},
-			"filesize",
+				color = { bg = "#BD9CE6", fg = "#000000" },
+				padding = 0.3,
+            },
+            location,
 		},
 		lualine_y = {},
 		lualine_z = {},
